@@ -10,14 +10,12 @@ def cli():
 @cli.command()
 @click.argument("uid")
 def migrate_album(uid):
-    click.echo(f"Migrating album with id {uid}")
     migrator = Migrator()
     migrator.migrate_album(uid=uid)
 
 
 @cli.command()
 def migrate_favorites():
-    click.echo("Migrating favorites")
     migrator = Migrator()
     migrator.migrate_favorites()
 

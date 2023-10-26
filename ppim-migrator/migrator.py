@@ -17,6 +17,7 @@ class Migrator:
         )
 
     def migrate_album(self, uid):
+        click.echo(f"Migrating album with id {uid}")
         album_title = self.pp_api.get_album_title(uid)
         click.echo(f"Album title: {album_title}")
 
@@ -35,6 +36,7 @@ class Migrator:
         click.echo("Done.")
 
     def migrate_favorites(self):
+        click.echo("Migrating favorites")
         photo_file_list = self.pp_api.get_photo_files_in_favorites()
 
         matching_uids = self._get_matching_uids(photo_file_list)

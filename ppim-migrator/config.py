@@ -1,4 +1,6 @@
 import yaml
+import click
+import sys
 
 
 class Config:
@@ -8,8 +10,12 @@ class Config:
 
     def read_config(self) -> None:
         # read config from config.yaml file
-        with open("config.yaml", "r") as f:
-            self.config = yaml.safe_load(f)
+        try:
+            with open("config.yaml", "r") as f:
+                self.config = yaml.safe_load(f)
+        except FileNotFoundError:
+            click.echo("Config file not found. Please create config.yaml.")
+            sys.exit(0)
 
     def validate(self) -> bool:
         # check if config is valid
