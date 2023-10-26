@@ -1,6 +1,6 @@
-from api.photoprism_api import PhotoprismApi
-from api.immich_api import ImmichApi
-from config import Config
+from .api.photoprism_api import PhotoprismApi
+from .api.immich_api import ImmichApi
+from .config import Config
 import click
 
 

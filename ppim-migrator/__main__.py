@@ -1,8 +1,5 @@
 import click
-from api.photoprism_api import PhotoprismApi
-from api.immich_api import ImmichApi
-from config import Config
-from migrator import Migrator
+from .migrator import Migrator
 
 
 @click.group()

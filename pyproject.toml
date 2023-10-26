@@ -1,0 +1,22 @@
+[build-system]
+requires = ["flit_core>=3.4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "ppim-migrator"
+version = "0.0.1"
+authors = [
+  { name="Valentin Riess", email="riess.valentin@gmail.com" },
+]
+description = "Migration tool for migrating album and favorites data from photoprism to immich"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/v411e/ppim-migrator"
+"Bug Tracker" = "https://github.com/v411e/ppim-migrator/issues"

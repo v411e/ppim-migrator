@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "main.py",
+            "program": "ppim-migrator/main.py",
             "args": [
                 //"migrate-album", "aqm7nj52giix3wq2"
                 //"migrate-album", "as35h9f10nn07ezw"
