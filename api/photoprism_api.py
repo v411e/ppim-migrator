@@ -53,18 +53,24 @@ class PhotoprismApi:
         json_response = response.json()
         return json_response
 
+    @staticmethod
     def _map_file_name(photos: list) -> list:
         photo_files = []
         for photo in photos:
             photo_files.append(photo["FileName"])
         return photo_files
 
+    def _filter_sidecar_files(self, photo_files: list) -> list:
+        return [file for file in photo_files if not file["FileRoot"] == "sidecar"]
+
     def get_photo_files_in_album(self, uid: str, count: int = 100000) -> list:
         photos: list = self._get_photos_in_album(uid, count)
+        photos = self._filter_sidecar_files(photos)
         return self._map_file_name(photos)
 
     def get_photo_files_in_favorites(self, count: int = 100000) -> list:
         photos: list = self._get_photos_in_favorites(count)
+        photos = self._filter_sidecar_files(photos)
         return self._map_file_name(photos)
 
     def get_album_title(self, uid: str) -> str:

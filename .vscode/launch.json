@@ -11,6 +11,7 @@
             "program": "main.py",
             "args": [
                 //"migrate-album", "aqm7nj52giix3wq2"
+                //"migrate-album", "as35h9f10nn07ezw"
                 "migrate-favorites"
             ],
             "console": "integratedTerminal",
