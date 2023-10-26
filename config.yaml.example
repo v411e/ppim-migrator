@@ -1,0 +1,7 @@
+photoprism:
+  base_url: https://photoprism.example.com
+  username: 
+  password: 
+immich:
+  base_url: https://immich.example.com
+  api_key: 
