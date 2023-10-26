@@ -3,6 +3,7 @@ from api.immich_api import ImmichApi
 from config import Config
 import click
 
+
 class Migrator:
     def __init__(self) -> None:
         config = Config()
@@ -25,7 +26,9 @@ class Migrator:
         click.echo(f"Photo file list: {photo_file_list}")
 
         matches_uids = self._get_matching_uids(photo_file_list, self.im_api)
-        click.echo(self.im_api.create_album(albumName=album_title, assetIds=matches_uids))
+        click.echo(
+            self.im_api.create_album(albumName=album_title, assetIds=matches_uids)
+        )
 
     def migrate_favorites(self):
         click.echo("Migrating favorites")

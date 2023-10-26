@@ -4,6 +4,7 @@ from api.immich_api import ImmichApi
 from config import Config
 from migrator import Migrator
 
+
 @click.group()
 def cli():
     pass
@@ -22,6 +23,7 @@ def migrate_favorites():
     click.echo("Migrating favorites")
     migrator = Migrator()
     migrator.migrate_favorites()
+
 
 if __name__ == "__main__":
     cli()

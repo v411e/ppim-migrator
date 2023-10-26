@@ -28,7 +28,7 @@ class PhotoprismApi:
         response = requests.get(photo_url, headers=headers)
         json_response = response.json()
         return json_response
-    
+
     # GET /api/v1/albums/:uid
     def _get_album_data(self, uid: str) -> dict:
         album_url = f"{self.base_url}/api/v1/albums/{uid}"
@@ -36,7 +36,7 @@ class PhotoprismApi:
         response = requests.get(album_url, headers=headers)
         json_response = response.json()
         return json_response
-    
+
     # GET /api/v1/photos?count=100000&s=:uid
     def _get_photos_in_album(self, uid: str, count: int = 100000) -> dict:
         album_url = f"{self.base_url}/api/v1/photos?count={count}&s={uid}"
@@ -44,7 +44,7 @@ class PhotoprismApi:
         response = requests.get(album_url, headers=headers)
         json_response = response.json()
         return json_response
-    
+
     # GET /api/v1/photos?count=100000&favorite=true
     def _get_photos_in_favorites(self, count: int = 100000) -> list:
         album_url = f"{self.base_url}/api/v1/photos?count={count}&favorite=true"
@@ -58,15 +58,15 @@ class PhotoprismApi:
         for photo in photos:
             photo_files.append(photo["FileName"])
         return photo_files
-    
+
     def get_photo_files_in_album(self, uid: str, count: int = 100000) -> list:
         photos: list = self._get_photos_in_album(uid, count)
         return self._map_file_name(photos)
-    
+
     def get_photo_files_in_favorites(self, count: int = 100000) -> list:
         photos: list = self._get_photos_in_favorites(count)
         return self._map_file_name(photos)
-    
+
     def get_album_title(self, uid: str) -> str:
         album_data = self._get_album_data(uid)
         title_from_server = album_data.get("Title", "")

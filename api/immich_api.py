@@ -54,9 +54,11 @@ class ImmichApi:
     # PUT /api/asset/:id
     def set_as_favorite(self, uid: str):
         url = f"{self.base_url}/api/asset/{uid}"
-        payload = json.dumps(
-            {"isFavorite": True}
-        )
-        headers = {"Content-Type": "application/json", "Accept": "application/json", "x-api-key": self.api_key}
+        payload = json.dumps({"isFavorite": True})
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "x-api-key": self.api_key,
+        }
         response = requests.request("PUT", url, headers=headers, data=payload)
         return response.text
