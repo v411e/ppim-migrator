@@ -8,7 +8,7 @@ build-backend = "flit_core.buildapi"
 name = "ppim-migrator"
 version = "0.0.1"
 authors = [
-  { name="Valentin Riess", email="riess.valentin@gmail.com" },
+  { name="Valentin Riess" },
 ]
 description = "Migration tool for migrating album and favorites data from photoprism to immich"
 readme = "README.md"
