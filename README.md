@@ -3,10 +3,13 @@
 This tool can migrate albums and favorites from Photoprism to Immich. It does not migrate you photos.
 
 ## Prerequisites
-The tool will only work if you keep the same file structure in immich that you already had in photoprism.
-This is the case if you take the `original` folder from photoprism and use it in immich as external library.
+1. The tool will only work if you keep the same file structure in immich that you already had in photoprism. This is the case if you take the `originals` folder from photoprism and use it in immich as external library.
+2. Photoprism and Immich must both be running at the same time, because the tool communicates with both APIs.
 
 ## How it works
+![ppim-migrator-diagram](https://github.com/v411e/ppim-migrator/assets/8049779/2231d351-8f67-4750-be28-ce9e3339d1c0)
+
+
 ### Migrate favorites
 1. The tool fetches all photos with a `favorite` tag from your photoprism instance
 2. For each photo, it retrieves the original `filename` and its respective `path`
