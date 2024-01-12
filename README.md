@@ -1,3 +1,6 @@
+> [!WARNING]
+> Not working in immich >= v1.91.0, because Typsesense was removed and it is currently not possible to search for file paths. This feature will soon be added back to immich during ongoing search enhancement. See https://github.com/v411e/ppim-migrator/issues/3 for more details.
+
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
 # Photoprism to Immich migrator
 This tool can migrate albums and favorites from Photoprism to Immich. It does not migrate you photos.
