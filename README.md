@@ -3,7 +3,7 @@
 
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
 # Photoprism to Immich migrator
-This tool can migrate albums and favorites from Photoprism to Immich. It does not migrate you photo files.
+This tool can migrate albums and favorites from Photoprism to Immich. It does not migrate your photo files.
 
 ## Prerequisites
 1. The tool will only work if you keep the same file structure in immich that you already had in photoprism. This is the case if you take the `originals` folder from photoprism and use it in immich as external library.
