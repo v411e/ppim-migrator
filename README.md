@@ -1,5 +1,5 @@
-> [!WARNING]
-> Not working in immich >= v1.91.0, because Typsesense was removed and it is currently not possible to search for file paths. This feature will soon be added back to immich during ongoing search enhancement. See https://github.com/v411e/ppim-migrator/issues/3 for more details.
+> [!NOTE]
+> There was an [issue](https://github.com/v411e/ppim-migrator/issues/3) with immich versions between v1.91.0 and v1.92.x Make sure to **use an immich version higher or equal to 1.93.x**
 
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
 # Photoprism to Immich migrator
