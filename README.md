@@ -1,6 +1,6 @@
 > [!NOTE]
-> Compatibility: 
-> v0.0.3 → Immich version 1.105.x - latest
+> Compatibility: <br>
+> v0.0.3 → Immich version 1.105.x - latest<br>
 > v0.0.2 → Immich version 1.93.x - 1.104.x
 
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
