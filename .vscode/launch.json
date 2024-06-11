@@ -5,17 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
+            "name": "Python Debugger: Module",
+            "type": "debugpy",
             "request": "launch",
-            "program": "ppim-migrator/main.py",
+            "module": "ppim-migrator",
             "args": [
                 //"migrate-album", "aqm7nj52giix3wq2"
-                //"migrate-album", "as35h9f10nn07ezw"
-                "migrate-favorites"
+                "migrate-album",
+                "as6zq323u22kxvzb"
+                //"migrate-favorites"
             ],
-            "console": "integratedTerminal",
-            "justMyCode": true
-        }
+        },
     ]
 }
