@@ -27,7 +27,8 @@ class Migrator:
         matching_uids = self._get_matching_uids(photo_file_list)
         matches_uids = matching_uids.get("uids")
         files_not_found = matching_uids.get("files_not_found")
-        self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
+        self._summary(matches_uids=matches_uids,
+                      files_not_found=files_not_found)
 
         click.echo("Creating album...")
 
@@ -42,7 +43,8 @@ class Migrator:
         matching_uids = self._get_matching_uids(photo_file_list)
         matches_uids = matching_uids.get("uids")
         files_not_found = matching_uids.get("files_not_found")
-        self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
+        self._summary(matches_uids=matches_uids,
+                      files_not_found=files_not_found)
 
         click.echo("Setting images as favorites...")
 
@@ -75,7 +77,7 @@ class Migrator:
         for photo_file in photo_file_list:
             uri_components = photo_file.split("/")
             filename = uri_components[-1]
-            search_result = self.im_api.search(query=filename)
+            search_result = self.im_api.search_metadata(originalFileName=filename)
             items: list = search_result.get("assets").get("items")
 
             matches_paths = []
@@ -95,11 +97,13 @@ class Migrator:
 
                 if len(matches_paths) == 1:
                     click.echo(
-                        f"Added a match: {filename} (pp: {photo_file}, im: {matches_paths[0]})"
+                        f"Added a match: {filename} (pp: {photo_file}, im: {
+                            matches_paths[0]})"
                     )
                 elif len(matches_paths) > 1:
                     click.echo(
-                        f"Added {len(matches_paths)} matches for {filename} in Immich"
+                        f"Added {len(matches_paths)} matches for {
+                            filename} in Immich"
                     )
                     click.echo(f"Original path in photoprism: {photo_file}")
                     click.echo(f"Possible matches in Immich:")

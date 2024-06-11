@@ -1,4 +1,5 @@
-import requests, json
+import requests
+import json
 
 
 class ImmichApi:
@@ -20,11 +21,20 @@ class ImmichApi:
         asset_uids = [asset.get("id") for asset in assets]
         return set(asset_uids)
 
-    # GET /api/search?q=:query&clip=false
-    def search(self, query: str) -> dict:
-        url = f"{self.base_url}/api/search?q={query}&clip=false"
-        headers = {"Accept": "application/json", "x-api-key": self.api_key}
-        response = requests.request("GET", url, headers=headers)
+    # POST /api/search/metadata
+    def search_metadata(self, originalFileName: str) -> dict:
+        url = f"{self.base_url}/api/search/metadata"
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "x-api-key": self.api_key
+        }
+        payload = json.dumps(
+            {
+                "originalFileName": originalFileName,
+            }
+        )
+        response = requests.request("POST", url, headers=headers, data=payload)
         json_response = response.json()
         return json_response
 
