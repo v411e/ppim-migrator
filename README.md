@@ -1,5 +1,7 @@
 > [!NOTE]
-> There was an [issue](https://github.com/v411e/ppim-migrator/issues/3) with immich versions between v1.91.0 and v1.92.x Make sure to **use an immich version higher or equal to 1.93.x**
+> Compatibility: 
+> v0.0.3 → Immich version 1.105.x - latest
+> v0.0.2 → Immich version 1.93.x - 1.104.x
 
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
 # Photoprism to Immich migrator
