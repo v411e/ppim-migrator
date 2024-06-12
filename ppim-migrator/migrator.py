@@ -27,8 +27,7 @@ class Migrator:
         matching_uids = self._get_matching_uids(photo_file_list)
         matches_uids = matching_uids.get("uids")
         files_not_found = matching_uids.get("files_not_found")
-        self._summary(matches_uids=matches_uids,
-                      files_not_found=files_not_found)
+        self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
 
         click.echo("Creating album...")
 
@@ -43,8 +42,7 @@ class Migrator:
         matching_uids = self._get_matching_uids(photo_file_list)
         matches_uids = matching_uids.get("uids")
         files_not_found = matching_uids.get("files_not_found")
-        self._summary(matches_uids=matches_uids,
-                      files_not_found=files_not_found)
+        self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
 
         click.echo("Setting images as favorites...")
 
@@ -97,16 +95,14 @@ class Migrator:
 
                 if len(matches_paths) == 1:
                     click.echo(
-                        f"Added a match: {filename} (pp: {photo_file}, im: {
-                            matches_paths[0]})"
+                        f"Added a match: {filename} (pp: {photo_file}, im: {matches_paths[0]})"
                     )
                 elif len(matches_paths) > 1:
                     click.echo(
-                        f"Added {len(matches_paths)} matches for {
-                            filename} in Immich"
+                        f"Added {len(matches_paths)} matches for {filename} in Immich"
                     )
                     click.echo(f"Original path in photoprism: {photo_file}")
-                    click.echo(f"Possible matches in Immich:")
+                    click.echo("Possible matches in Immich:")
                     for match in matches_paths:
                         click.echo(f" - {match.get('originalPath')}")
                 else:
@@ -120,9 +116,9 @@ class Migrator:
     def _summary(matches_uids: list, files_not_found: list):
         if files_not_found:
             click.echo(f"Images found in immich: {len(matches_uids)}")
-            click.echo(f"Images not found in immich:")
+            click.echo("Images not found in immich:")
             for file in files_not_found:
                 click.echo(f" - {file}")
         else:
-            click.echo(f"Migration successful!")
+            click.echo("Migration successful!")
             click.echo(f"All images found in immich: {len(matches_uids)}")
