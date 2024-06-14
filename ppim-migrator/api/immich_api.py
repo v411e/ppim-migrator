@@ -38,14 +38,14 @@ class ImmichApi:
         json_response = response.json()
         return json_response
 
-    # POST /album
+    # POST /albums
     def create_album(
         self,
         albumName: str,
         assetIds: list = [],
         description: str = "Imported from photoprism",
     ) -> str:
-        url = f"{self.base_url}/api/album"
+        url = f"{self.base_url}/api/albums"
         payload = json.dumps(
             {
                 "albumName": albumName,
@@ -61,9 +61,9 @@ class ImmichApi:
         response = requests.request("POST", url, headers=headers, data=payload)
         return response.text
 
-    # PUT /api/asset/:id
+    # PUT /api/assets/:id
     def set_as_favorite(self, uid: str):
-        url = f"{self.base_url}/api/asset/{uid}"
+        url = f"{self.base_url}/api/assets/{uid}"
         payload = json.dumps({"isFavorite": True})
         headers = {
             "Content-Type": "application/json",
