@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build distribution 📦
-    if: startsWith(github.ref, 'refs/tags/')  # only run build on tag pushes
+    if: startsWith(github.ref, 'refs/tags/') || startsWith(github.event_name, 'workflow_dispatch') # only run build on tag pushes
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
   publish-to-pypi:
     name: >-
       Publish Python 🐍 distribution 📦 to PyPI
-    if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/') || startsWith(github.event_name, 'workflow_dispatch') # only publish to PyPI on tag pushes
     needs:
     - build
     runs-on: ubuntu-latest
