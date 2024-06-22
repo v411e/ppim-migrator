@@ -7,20 +7,6 @@ class ImmichApi:
         self.base_url = base_url
         self.api_key = api_key
 
-    # GET /api/album/:id
-    def _get_album_info(self, album_id: str) -> dict:
-        url = f"{self.base_url}/api/album/{album_id}"
-        headers = {"Accept": "application/json", "x-api-key": self.api_key}
-        response = requests.request("GET", url, headers=headers)
-        json_response = response.json()
-        return json_response
-
-    def get_album_asset_uids(self, album_id: str) -> dict:
-        album_info = self._get_album_info(album_id)
-        assets = album_info.get("assets")
-        asset_uids = [asset.get("id") for asset in assets]
-        return set(asset_uids)
-
     # POST /api/search/metadata
     def search_metadata(self, originalFileName: str) -> dict:
         url = f"{self.base_url}/api/search/metadata"
