@@ -10,10 +10,11 @@
             "request": "launch",
             "module": "ppim-migrator",
             "args": [
-                //"migrate-album", "aqm7nj52giix3wq2"
                 "migrate-album",
                 "as6zq323u22kxvzb"
                 //"migrate-favorites"
+                // "migrate-all-albums",
+                // "--count=2"
             ],
         },
     ]
