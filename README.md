@@ -63,11 +63,12 @@ Example:
 ```
 python -m ppim-migrator migrate-album <album-id-here>
 ```
+
 ### Migrate all albums from photoprism to immich
 ```
-python -m ppim-migrator  migrate-all-albums
+python -m ppim-migrator migrate-all-albums
 ```
-You can overwrite the 1000 albums cap with the following : 
+You can overwrite the default 1000 albums cap, by adding a `--count=` option:
 ```
 python -m ppim-migrator migrate-all-albums --count=5000
 ```
