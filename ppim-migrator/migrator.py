@@ -17,39 +17,29 @@ class Migrator:
         )
     
     def migrate_all_albums(self, count: int = 1000):
-        click.echo(f"Migrating all albums...")
+        click.echo(f"Migrating all albums (limit: {count})...")
         data = self.pp_api.get_all_albums_data(count)
-        
 
         # Migrate one by one...
-        i = 1
         album_num = len(data)
-        for album in data:
-            click.echo(f"-------------- ({i}/{album_num})")
-            i += 1
-            uid = album["UID"]
-            album_title = album["Title"]
-            click.echo(f"Migrating album with id {uid}")
-            click.echo(f"Album title: {album_title}")
+        for index, album in enumerate(data):
+            click.echo(f"-------------- ({index + 1}/{album_num})")
+            self._migrate_album(uid=album["UID"], album_title=album["Title"])
 
-            photo_file_list = self.pp_api.get_photo_files_in_album(uid=uid)
-            # click.echo(f"Photo file list: {photo_file_list}") # Too verbose...
-
-            matching_uids = self._get_matching_uids(photo_file_list)
-            matches_uids = matching_uids.get("uids")
-            files_not_found = matching_uids.get("files_not_found")
-            self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
-
-            click.echo("Creating album...")
-
-            self.im_api.create_album(albumName=album_title, assetIds=matches_uids)
         click.echo("--------------")
         click.echo("Done.")
-        
 
     def migrate_album(self, uid):
         click.echo(f"Migrating album with id {uid}")
+
         album_title = self.pp_api.get_album_title(uid)
+        click.echo(f"Album title: {album_title}")
+
+        self._migrate_album(uid=uid, album_title=album_title)
+        click.echo("Done.")
+
+    def _migrate_album(self, uid: str, album_title: str):
+        click.echo(f"Migrating album with id {uid}")
         click.echo(f"Album title: {album_title}")
 
         photo_file_list = self.pp_api.get_photo_files_in_album(uid=uid)
@@ -63,8 +53,6 @@ class Migrator:
         click.echo("Creating album...")
 
         self.im_api.create_album(albumName=album_title, assetIds=matches_uids)
-
-        click.echo("Done.")
 
     def migrate_favorites(self):
         click.echo("Migrating favorites")
