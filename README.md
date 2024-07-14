@@ -69,5 +69,5 @@ python -m ppim-migrator  migrate-all-albums
 ```
 You can overwrite the 1000 albums cap with the following : 
 ```
-python -m ppim-migrator  migrate-all-albums --count 5000
+python -m ppim-migrator migrate-all-albums --count=5000
 ```
