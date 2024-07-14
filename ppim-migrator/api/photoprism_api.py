@@ -29,6 +29,14 @@ class PhotoprismApi:
         json_response = response.json()
         return json_response
 
+    # GET /api/v1/albums?count=100&type=album
+    def _get_all_albums_data(self, count: int = 1000) -> dict:
+        album_url = f"{self.base_url}/api/v1/albums?count={count}&type=album"
+        headers = {"X-Session-ID": self._get_session_id()}
+        response = requests.get(album_url, headers=headers)
+        json_response = response.json()
+        return json_response
+
     # GET /api/v1/albums/:uid
     def _get_album_data(self, uid: str) -> dict:
         album_url = f"{self.base_url}/api/v1/albums/{uid}"
@@ -62,6 +70,10 @@ class PhotoprismApi:
 
     def _filter_sidecar_files(self, photo_files: list) -> list:
         return [file for file in photo_files if not file["FileRoot"] == "sidecar"]
+
+    def get_all_albums_data(self, count: int = 1000) -> list:
+        albums_data = self._get_all_albums_data(count)
+        return albums_data
 
     def get_photo_files_in_album(self, uid: str, count: int = 100000) -> list:
         photos: list = self._get_photos_in_album(uid, count)

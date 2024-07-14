@@ -28,6 +28,10 @@ This tool can migrate albums and favorites from Photoprism to Immich. It does no
 3. It connects to immich, tries to find the photo by `filename` and validates potential candidates on the immich side by comparing the file `path`
 4. If a match was found, it creates a new `album` in immich and adds the matched photos
 
+### Migrate all albums
+1. The tool fetches all albums from your photoprism instance (1000 albums by default)
+2. For each album found, the migration is launched as described per the previous paragraph.
+
 ## Installation
 ```
 pip install ppim-migrator
@@ -58,4 +62,13 @@ Example:
   The `album-id` would be `aqrcixa2uf1q45iq`
 ```
 python -m ppim-migrator migrate-album <album-id-here>
+```
+
+### Migrate all albums from photoprism to immich
+```
+python -m ppim-migrator migrate-all-albums
+```
+You can overwrite the default 1000 albums cap, by adding a `--count=` option:
+```
+python -m ppim-migrator migrate-all-albums --count=5000
 ```
