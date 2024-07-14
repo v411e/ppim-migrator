@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 
 class ImmichApi:
@@ -28,8 +29,8 @@ class ImmichApi:
     def create_album(
         self,
         albumName: str,
-        assetIds: list = [],
-        description: str = "Imported from photoprism",
+        assetIds = [],
+        description = f"Imported from photoprism ({datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")})",
     ) -> str:
         url = f"{self.base_url}/api/albums"
         payload = json.dumps(
