@@ -15,6 +15,37 @@ class Migrator:
         self.im_api = ImmichApi(
             config.config["immich"]["base_url"], config.config["immich"]["api_key"]
         )
+    
+    def migrate_all_albums(self, count: int = 1000):
+        click.echo(f"Migrating all albums...")
+        data = self.pp_api.get_all_albums_data(count)
+        
+
+        # Migrate one by one...
+        i = 1
+        album_num = len(data)
+        for album in data:
+            click.echo(f"-------------- ({i}/{album_num})")
+            i += 1
+            uid = album["UID"]
+            album_title = album["Title"]
+            click.echo(f"Migrating album with id {uid}")
+            click.echo(f"Album title: {album_title}")
+
+            photo_file_list = self.pp_api.get_photo_files_in_album(uid=uid)
+            # click.echo(f"Photo file list: {photo_file_list}") # Too verbose...
+
+            matching_uids = self._get_matching_uids(photo_file_list)
+            matches_uids = matching_uids.get("uids")
+            files_not_found = matching_uids.get("files_not_found")
+            self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
+
+            click.echo("Creating album...")
+
+            self.im_api.create_album(albumName=album_title, assetIds=matches_uids)
+        click.echo("--------------")
+        click.echo("Done.")
+        
 
     def migrate_album(self, uid):
         click.echo(f"Migrating album with id {uid}")

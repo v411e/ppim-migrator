@@ -19,6 +19,11 @@ def migrate_favorites():
     migrator = Migrator()
     migrator.migrate_favorites()
 
+@cli.command()
+@click.option('--count', default=1000, help='Number of albums to migrate.')
+def migrate_all_albums(count):
+    migrator = Migrator()
+    migrator.migrate_all_albums(count)
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     cli()
