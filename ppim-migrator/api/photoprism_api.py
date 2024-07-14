@@ -29,7 +29,7 @@ class PhotoprismApi:
         json_response = response.json()
         return json_response
 
-    # GET /api/v1/albums?count=100&offset=0&q=&category=&order=favorites&year=&type=album
+    # GET /api/v1/albums?count=100&type=album
     def _get_all_albums_data(self, count: int = 1000) -> dict:
         album_url = f"{self.base_url}/api/v1/albums?count={count}&type=album"
         headers = {"X-Session-ID": self._get_session_id()}
