@@ -15,7 +15,7 @@ class Migrator:
         self.im_api = ImmichApi(
             config.config["immich"]["base_url"], config.config["immich"]["api_key"]
         )
-    
+
     def migrate_all_albums(self, count: int = 1000):
         click.echo(f"Migrating all albums (limit: {count})...")
         data = self.pp_api.get_all_albums_data(count)
