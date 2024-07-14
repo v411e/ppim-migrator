@@ -25,5 +25,5 @@ def migrate_all_albums(count):
     migrator = Migrator()
     migrator.migrate_all_albums(count)
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     cli()
