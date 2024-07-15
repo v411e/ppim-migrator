@@ -30,7 +30,7 @@ class ImmichApi:
         self,
         albumName: str,
         assetIds = [],
-        description = f"Imported from photoprism ({datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")})",
+        description = f'Imported from photoprism ({datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")})',
     ) -> str:
         url = f"{self.base_url}/api/albums"
         payload = json.dumps(
