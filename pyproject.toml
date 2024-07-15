@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "ppim-migrator"
-version = "0.0.6"
+version = "0.0.7"
 authors = [
   { name="Valentin Riess" },
 ]
