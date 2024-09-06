@@ -48,7 +48,10 @@ immich:
   base_url: https://immich.example.com
   api_key: 
 ```
-
+Notes:
+* The PhotoPrism account must not have two factor authentication enabled
+* `base_url` must not end with a slash
+  
 ## Usage
 ### Migrate all favorites from photoprism to immich
 ```
