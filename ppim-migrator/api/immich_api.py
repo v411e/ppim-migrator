@@ -59,3 +59,22 @@ class ImmichApi:
         }
         response = requests.request("PUT", url, headers=headers, data=payload)
         return response.text
+    
+    # POST /api/stacks
+    def create_stack(
+        self,
+        assetIds = [],
+    ) -> str:
+        url = f"{self.base_url}/api/stacks"
+        payload = json.dumps(
+            {
+                "assetIds": assetIds,
+            }
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "x-api-key": self.api_key,
+        }
+        response = requests.request("POST", url, headers=headers, data=payload)
+        return response.text
