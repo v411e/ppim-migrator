@@ -75,3 +75,13 @@ You can overwrite the default 1000 albums cap, by adding a `--count=` option:
 ```
 python -m ppim-migrator migrate-all-albums --count=5000
 ```
+
+### Migrate JPG+RAW stacks from photoprism to immich
+Since Immich does not support auto stacking yet, these stacks can be migrated over from photoprism.
+```
+python -m ppim-migrator migrate-stacked-raws
+```
+You can overwrite the default 100000 photos cap, by adding a `--count=` option:
+```
+python -m ppim-migrator migrate-stacked-raws --count=200000
+```
