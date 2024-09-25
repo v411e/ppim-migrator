@@ -27,9 +27,10 @@ def migrate_all_albums(count):
 
 #migrate stacks
 @cli.command()
-def migrate_stacked_raws():
+@click.option('--count', default=100000, help='Number of photo+raw stacks to migrate.')
+def migrate_stacked_raws(count):
     migrator = Migrator()
-    migrator.migrate_stacked_raws()
+    migrator.migrate_stacked_raws(count)
 
 if __name__ == "__main__":
     cli()
