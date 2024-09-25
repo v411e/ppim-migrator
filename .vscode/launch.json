@@ -10,8 +10,9 @@
             "request": "launch",
             "module": "ppim-migrator",
             "args": [
-                "migrate-album",
-                "as6zq323u22kxvzb"
+                "migrate-stacked-raws"
+                //"migrate-album",
+                //"as6zq323u22kxvzb"
                 //"migrate-favorites"
                 // "migrate-all-albums",
                 // "--count=2"

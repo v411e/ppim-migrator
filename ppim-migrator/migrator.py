@@ -16,6 +16,22 @@ class Migrator:
             config.config["immich"]["base_url"], config.config["immich"]["api_key"]
         )
 
+    def migrate_stacked_raws(self, count: int = 100000):
+        click.echo(f"Migrating all stacks (limit: {count})...")
+        jpg_raw_pairs = self.pp_api.get_raws_with_jpg_original(count)
+
+        for filelist in jpg_raw_pairs:
+            matching_uids = self._get_matching_uids(filelist)
+            matches_uids = matching_uids.get("uids")
+            files_not_found = matching_uids.get("files_not_found")
+            self._summary(matches_uids=matches_uids, files_not_found=files_not_found)
+
+            if(len(matches_uids) >= 2):
+                click.echo("Creating stack ...")
+                stack = self.im_api.create_stack(matches_uids)
+                click.echo(stack)
+
+
     def migrate_all_albums(self, count: int = 1000):
         click.echo(f"Migrating all albums (limit: {count})...")
         data = self.pp_api.get_all_albums_data(count)

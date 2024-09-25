@@ -25,5 +25,11 @@ def migrate_all_albums(count):
     migrator = Migrator()
     migrator.migrate_all_albums(count)
 
+#migrate stacks
+@cli.command()
+def migrate_stacked_raws():
+    migrator = Migrator()
+    migrator.migrate_stacked_raws()
+
 if __name__ == "__main__":
     cli()
