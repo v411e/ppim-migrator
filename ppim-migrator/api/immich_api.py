@@ -5,7 +5,7 @@ import datetime
 
 class ImmichApi:
     def __init__(self, base_url: str, api_key: str):
-        self.base_url = base_url
+        self.base_url = base_url.rstrip("/")
         self.api_key = api_key
 
     # POST /api/search/metadata
@@ -59,7 +59,7 @@ class ImmichApi:
         }
         response = requests.request("PUT", url, headers=headers, data=payload)
         return response.text
-    
+
     # POST /api/stacks
     def create_stack(
         self,
