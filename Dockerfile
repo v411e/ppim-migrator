@@ -1,7 +1,7 @@
-FROM python:slim-bookworm
-COPY requirements.txt config.yaml /root
-COPY ppim-migrator /root/ppim-migrator
-WORKDIR /root
-RUN pip3 install -r requirements.txt
-ENV PYTHONPATH=/root
+FROM python:slim
+WORKDIR /app
+COPY requirements.txt config.yaml ./
+COPY ppim-migrator ./ppim-migrator
+RUN pip3 install -r requirements.txt --break-system-packages
+ENV PYTHONPATH=/app
 ENTRYPOINT [ "python", "-m", "ppim-migrator" ]
