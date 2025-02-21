@@ -42,16 +42,15 @@ Create a `config.yaml` file in the working directory where you want to run the c
 ```
 photoprism:
   base_url: https://photoprism.example.com
-  username: 
-  password: 
+  username:
+  password:
 immich:
   base_url: https://immich.example.com
-  api_key: 
+  api_key:
 ```
 Notes:
 * The PhotoPrism account must not have two factor authentication enabled
-* `base_url` must not end with a slash
-  
+
 ## Usage
 ### Migrate all favorites from photoprism to immich
 ```
@@ -59,7 +58,7 @@ python -m ppim-migrator migrate-favorites
 ```
 
 ### Migrate a certain album from photoprism to immich
-To get an `album-id` just open the album in photoprism. The id is part of the url. 
+To get an `album-id` just open the album in photoprism. The id is part of the url.
 Example:
 - Url, when opening the album: `https://photoprism.example.com/library/albums/aqrcixa2uf1q45iq/view`
   The `album-id` would be `aqrcixa2uf1q45iq`
