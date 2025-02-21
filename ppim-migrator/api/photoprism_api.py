@@ -3,7 +3,7 @@ import requests
 
 class PhotoprismApi:
     def __init__(self, base_url: str, username: str, password: str):
-        self.base_url = base_url
+        self.base_url = base_url.rstrip("/")
         self.username = username
         self.password = password
 
@@ -60,7 +60,7 @@ class PhotoprismApi:
         response = requests.get(album_url, headers=headers)
         json_response = response.json()
         return json_response
-    
+
     # GET /api/v1/photos?count=100000&stack=true&type=image|raw
     def _get_raw_photos(self, count: int = 100000) -> list:
         search_url = f"{self.base_url}/api/v1/photos?count={count}&type=raw&merged=true"
@@ -92,19 +92,19 @@ class PhotoprismApi:
         photos: list = self._get_photos_in_favorites(count)
         photos = self._filter_sidecar_files(photos)
         return self._map_file_name(photos)
-    
+
     def get_raws_with_jpg_original(self, count: int = 100000) -> list:
         photos: list = self._get_raw_photos(count)
         photos_with_multiple_non_sidecar_files = [
             item for item in photos if sum(1 for file in item["Files"] if file.get("Root") != "sidecar") > 1
-        ]       
+        ]
 
-        raw_jpg_pairs = [ 
-            [file.get("Name") for file in item["Files"]] 
+        raw_jpg_pairs = [
+            [file.get("Name") for file in item["Files"]]
             for item in photos_with_multiple_non_sidecar_files
-        ]  
+        ]
 
-        # Get list of list of files 
+        # Get list of list of files
         return raw_jpg_pairs
 
     def get_album_title(self, uid: str) -> str:
