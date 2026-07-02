@@ -1,8 +1,11 @@
 > [!NOTE]
 > Compatibility: <br>
-> v0.0.5 → Immich version 1.106.x - latest<br>
+> v0.0.5 → Immich version 1.106.x - v2<br>
 > v0.0.4 → Immich version 1.105.x<br>
 > v0.0.2 → Immich version 1.93.x - 1.104.x
+
+> [!WARNING]
+> Currently not compatible with immich v3 due to changes on the API. Feel free to open a PR, the fix should not be that complicated. <br>
 
 [![PyPI version](https://badge.fury.io/py/ppim-migrator.svg)](https://badge.fury.io/py/ppim-migrator)
 # Photoprism to Immich migrator
